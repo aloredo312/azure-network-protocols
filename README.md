@@ -36,17 +36,33 @@ Open Wireshark and start a new packet capture. To see ICMP traffic, filter for I
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="970" alt="request_timed_out_wireshark" src="https://github.com/user-attachments/assets/32cd6eb2-7cdb-4367-9982-6ae38e42afcc">
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+To configure a Firewall (Network Security Group) we will initiate a non-stop ping from the Windows 10VM to the Ubuntu VM. Open the Network Security Group your Ubuntu VM is using and add a rule that disables incoming ICMP traffic. Back in the Windows 10 VM, observe the ICMP traffic in Wireshark and the command line Ping activity and you will see that the request times out and there is no reply. To re-enable ICMp traffic just delete the rule that was added in the Network Security Group in the Ubuntu VM.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1102" alt="observing_ssh_traffic" src="https://github.com/user-attachments/assets/5e34d8e8-7776-4fc1-89e5-cad6eadfbab2">
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+To observe for SSH traffic start a new packet capture in Wireshark. Filter for SSH traffic only. From the Windows 10 VM open Powershell, and type: ssh labuser@(private IP adress). Then type commands into the linux SSH connection to observe SSH traffic spam in Wireshark. Type "exit" and press (enter) to exit the SSH connection.
+</p>
+<br />
+
+<p>
+<img width="1192" alt="observing_dns_traffic" src="https://github.com/user-attachments/assets/8c373785-adf2-4ff9-8d38-9c4ad9bf86f7">
+</p>
+<p>
+To observe DNS traffic, filter for DNS traffic. From the Windows 10 VM in the command line, use nslookup to see what google.com, disney.com, or any website you like and see what their IP addresses are. In Wireshark you can observe the DNS traffic that is being shown.
+</p>
+<br />
+
+<p>
+<img width="1085" alt="observing_rdp" src="https://github.com/user-attachments/assets/e314b393-419d-473d-894b-0996670e6826">
+</p>
+<p>
+To observe RDP traffic, filter for RDP traffic only. For this type "tcp.port == 3389". Back in Wireshark you will see the non-stop spam of traffic
 </p>
 <br />
